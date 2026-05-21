@@ -1,0 +1,16 @@
+{
+  "name": "ai-plus-presentasjon",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Interaktiv presentasjon for AI+Offentlig sektor 2026 — Hva skal til for å få en KI-chatbot som faktisk funker?",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^6.0.3"
+  }
+}

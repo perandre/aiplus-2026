@@ -1,0 +1,25 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+.vite
+
+# Editor / OS
+.DS_Store
+*.log
+.idea
+.vscode
+
+# Reference clone (vi har kopiert det vi trenger til public/)
+_design
+
+# Store videoer (overstiger GitHub 100MB per-fil-grense)
+public/media/*.mp4
+public/media/*.mov
+public/media/*.webm
+
+# Lokal Vercel/Vite-cache
+.vercel
+.env
+.env.local
