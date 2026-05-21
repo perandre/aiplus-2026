@@ -6,8 +6,7 @@ const slide: Slide = {
   render: () =>
     mediaSlide({
       eyebrow: 'Reis Nordland · i drift',
-      src: '/media/reise-nordland-presentasjon.compressed.mp4',
-      type: 'video',
+      src: 'https://youtu.be/Pp68f7jlabw',
       alt: 'Reis Nordland presentasjonsvideo',
       caption: 'Vi har bygd det. Nå skal vi skalere det.',
     }),

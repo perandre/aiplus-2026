@@ -12,20 +12,55 @@ interface MediaFrameOpts {
   style?: string;
 }
 
+function youtubeEmbedUrl(src: string): string | null {
+  // Match youtu.be/<id> or youtube.com/watch?v=<id>
+  const m =
+    src.match(/youtu\.be\/([\w-]{6,})/i) ||
+    src.match(/youtube\.com\/watch\?v=([\w-]{6,})/i) ||
+    src.match(/youtube\.com\/embed\/([\w-]{6,})/i);
+  if (!m) return null;
+  const id = m[1];
+  const params = new URLSearchParams({
+    autoplay: '1',
+    mute: '1',
+    loop: '1',
+    playlist: id,
+    controls: '1',
+    modestbranding: '1',
+    rel: '0',
+    playsinline: '1',
+  });
+  return `https://www.youtube.com/embed/${id}?${params.toString()}`;
+}
+
 export function mediaFrame(opts: MediaFrameOpts): string {
-  const type = opts.type ?? (opts.src.match(/\.(mp4|webm|mov)$/i) ? 'video' : 'image');
+  let src = opts.src;
+  let type = opts.type;
+
+  // Auto-detect YouTube — even if user passed type: 'video', a YouTube URL
+  // needs to be embedded as an iframe.
+  const ytEmbed = youtubeEmbedUrl(src);
+  if (ytEmbed) {
+    src = ytEmbed;
+    type = 'iframe';
+  } else if (!type) {
+    type = src.match(/\.(mp4|webm|mov)$/i) ? 'video' : 'image';
+  }
+
   const style = opts.style ? ` style="${opts.style}"` : '';
+  const isIframe = type === 'iframe';
+  const cls = isIframe ? 'media-frame media-frame--iframe' : 'media-frame';
 
   let inner = '';
   if (type === 'video') {
-    inner = `<video src="${opts.src}" autoplay muted loop playsinline></video>`;
+    inner = `<video src="${src}" autoplay muted loop playsinline></video>`;
   } else if (type === 'iframe') {
-    inner = `<iframe src="${opts.src}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" title="${opts.alt ?? ''}"></iframe>`;
+    inner = `<iframe src="${src}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${opts.alt ?? ''}"></iframe>`;
   } else {
-    inner = `<img src="${opts.src}" alt="${opts.alt ?? ''}" />`;
+    inner = `<img src="${src}" alt="${opts.alt ?? ''}" />`;
   }
 
-  return `<div class="media-frame"${style}><div class="media-frame-inner">${inner}</div></div>`;
+  return `<div class="${cls}"${style}><div class="media-frame-inner">${inner}</div></div>`;
 }
 
 interface MediaSlideOpts {
