@@ -2,11 +2,11 @@ import type { Slide } from '../lib/slide';
 
 const slide: Slide = {
   id: 'nfk-ambition',
-  title: 'Hele Nordland fylkeskommune',
+  title: 'Nordland fylkeskommune — hele fylket',
   render: () => `
     <section class="slide">
-      <div class="eyebrow">Casen · 2026</div>
-      <h2 class="h1">Nå: <span class="gradient-text">hele fylket</span>.</h2>
+      <div class="eyebrow">Casen</div>
+      <h2 class="h1">Nå skal vi <span class="gradient-text">løfte hele Nordland</span>.</h2>
       <div class="card-grid" style="margin-top:var(--s-xl);">
         <div class="card-dark" style="text-align:center;">
           <div class="h2" style="color:var(--g1);margin:0;">🎓</div>
@@ -26,8 +26,8 @@ const slide: Slide = {
         </div>
       </div>
       <p class="lead" style="margin-top:var(--s-2xl);color:var(--on-dark-muted);">
-        Fire fagområder. Helt ulike språk, prosesser og dokumenter.
-        Hvordan bygger man det — uten å bygge fire chatbots?
+        Fire fagområder. Helt ulike språk og prosesser.<br/>
+        <strong style="color:var(--on-dark);">Spørsmålet er: hvordan?</strong>
       </p>
       <div class="slide-logo"><img src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" /></div>
     </section>
