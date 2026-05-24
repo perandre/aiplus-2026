@@ -21,15 +21,15 @@ import overflateChat from './11-overflate-chat';
 import overflateAiSok from './12-overflate-ai-sok';
 import overflateStudieguide from './13-overflate-studieguide';
 import overflateFeedback from './14-overflate-feedback';
-import overflateFuture from './15-overflate-future';
+import overflateAutomation from './15-overflate-automation';
+import overflateFuture from './16-overflate-future';
 
 // PART 5 — Tips
-import tipsPivot from './16-tips-pivot';
-import tips1 from './17-tip1-statement';
-import tips1Workspace from './18-tip1-workspace';
-import tips1Analytics from './19-tip1-analytics';
-import tips2 from './20-tip2-statement';
-import tips2Arkitektur from './21-tip2-arkitektur';
+import tipsPivot from './17-tips-pivot';
+import tips1 from './18-tip1-statement';
+import tips1Workspace from './19-tip1-workspace';
+import tips1Analytics from './20-tip1-analytics';
+import tips2 from './21-tip2-statement';
 import tips2Instructions from './22-tip2-instructions';
 import tips3 from './23-tip3-statement';
 import tips3Kilder from './24-tip3-kilder';
@@ -60,13 +60,13 @@ export const slides: Slide[] = [
   overflateAiSok,
   overflateStudieguide,
   overflateFeedback,
+  overflateAutomation,
   overflateFuture,
   tipsPivot,
   tips1,
   tips1Workspace,
   tips1Analytics,
   tips2,
-  tips2Arkitektur,
   tips2Instructions,
   tips3,
   tips3Kilder,
