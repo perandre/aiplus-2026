@@ -63,6 +63,22 @@ body {
   justify-content: space-between;
 }
 
+.cover-byline {
+  display: flex;
+  align-items: center;
+  gap: var(--s-lg);
+  margin-top: var(--s-xl);
+  font-size: clamp(20px, 2.6cqh, 30px);
+  color: var(--on-dark-muted);
+  font-weight: 700;
+}
+.cover-byline img {
+  height: clamp(28px, 3.8cqh, 48px);
+  width: auto;
+  opacity: 0.9;
+  margin-left: var(--s-sm);
+}
+
 /* Slide entry / exit animations */
 .slide {
   opacity: 0;
