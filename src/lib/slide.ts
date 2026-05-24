@@ -64,23 +64,39 @@ export function mediaFrame(opts: MediaFrameOpts): string {
 }
 
 interface MediaSlideOpts {
-  eyebrow: string;
+  eyebrow?: string;
   src: string;
   type?: 'image' | 'video' | 'iframe';
   alt?: string;
   caption?: string;
+  /** When true, removes eyebrow and caption — pure media with optional logo. */
+  bleed?: boolean;
+  /** When false, hide the Frontkom logo in the bottom row. */
+  logo?: boolean;
 }
 
 /** Full slide rendering for a media-only layout: eyebrow on top, big screenshot in middle, caption + logo at bottom. */
 export function mediaSlide(opts: MediaSlideOpts): string {
+  const showEyebrow = !opts.bleed && opts.eyebrow;
+  const showCaption = !opts.bleed && opts.caption;
+  const showLogo = opts.logo !== false;
+
+  const eyebrowMarkup = showEyebrow ? `<div class="media-eyebrow">${opts.eyebrow}</div>` : '';
+  const captionMarkup = showCaption ? `<p class="media-caption">${opts.caption}</p>` : '';
+  const logoMarkup = showLogo
+    ? `<img class="slide-logo" src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" />`
+    : '';
+
+  const hasBottom = captionMarkup || logoMarkup;
+  const bottomMarkup = hasBottom ? `<div class="media-bottom">${captionMarkup}${logoMarkup}</div>` : '';
+
+  const classes = ['slide', 'media-only', opts.bleed ? 'media-bleed' : ''].filter(Boolean).join(' ');
+
   return `
-    <section class="slide media-only">
-      <div class="media-eyebrow">${opts.eyebrow}</div>
+    <section class="${classes}">
+      ${eyebrowMarkup}
       <div class="media-wrap">${mediaFrame({ src: opts.src, type: opts.type, alt: opts.alt })}</div>
-      <div class="media-bottom">
-        <p class="media-caption">${opts.caption ?? ''}</p>
-        <img class="slide-logo" src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" />
-      </div>
+      ${bottomMarkup}
     </section>
   `;
 }

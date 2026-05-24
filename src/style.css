@@ -168,6 +168,13 @@ body {
   flex-direction: column;
   gap: 2.4vmin;
 }
+.slide.media-only.media-bleed {
+  padding: 2vmin;
+  gap: 0;
+}
+.slide.media-only.media-bleed .media-wrap {
+  flex: 1 1 100%;
+}
 
 .slide.media-only .media-eyebrow {
   flex: 0 0 auto;
