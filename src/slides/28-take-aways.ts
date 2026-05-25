@@ -7,7 +7,7 @@ const slide: Slide = {
     <section class="slide statement">
       <div class="eyebrow">Når dere implementerer chatbot:</div>
       <h1 class="statement-text">
-        Gjør en grundig jobb —<br/>
+        Lag et KI-lag for hele brukerreisen —<br/>
         <span class="gradient-text">og gjenbruk i flere kanaler</span>.
       </h1>
       <div class="slide-logo"><img src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" /></div>
