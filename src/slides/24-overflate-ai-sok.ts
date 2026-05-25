@@ -6,8 +6,8 @@ const slide: Slide = {
   render: () =>
     mediaSlide({
       eyebrow: 'Overflate 2 · AI-søk',
-      src: '/media/ai-search-overview.png',
-      alt: 'NMBU AI-søk',
+      src: '/media/nmbu-search.gif',
+      alt: 'NMBU AI-søk i bruk',
       caption: 'NMBU — søk som svarer.',
     }),
 };
