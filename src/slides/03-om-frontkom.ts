@@ -1,6 +1,5 @@
 import { slideShell, type Slide } from '../lib/slide';
 
-// TODO: bekreft stiftelsesår og beskrivelse
 const slide: Slide = {
   id: 'om-frontkom',
   title: 'Om Frontkom',
@@ -11,8 +10,7 @@ const slide: Slide = {
       <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:var(--s-lg);">
         <img src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" style="height:clamp(60px,9cqh,120px);width:auto;align-self:flex-start;" />
         <p class="lead" style="margin-top:var(--s-xl);">
-          Digitalbyrå siden <strong style="color:var(--on-dark);">[år]</strong>.<br/>
-          Leverer KI-løsninger til offentlig sektor og bedrifter —<br/>
+          Digitalbyrå som leverer KI-løsninger til offentlig sektor og bedrifter —<br/>
           fra digitale medarbeidere til automatisering.
         </p>
       </div>

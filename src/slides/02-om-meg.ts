@@ -11,7 +11,7 @@ const slide: Slide = {
       <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:var(--s-lg);">
         <h1 class="h1">Per André Rønsen</h1>
         <p class="lead" style="color:var(--on-dark-muted);">
-          Senior utvikler · Frontkom<br/>
+          Head of AI · Frontkom<br/>
           PhD-kandidat
         </p>
       </div>
