@@ -113,6 +113,40 @@ body {
 .suksess-5 { background: var(--g5); }
 
 /* ============================================================
+   FINALE — slow watermark spin + particle layer on Takk-slide
+   ============================================================ */
+.slide.finale {
+  overflow: hidden;
+}
+.slide.finale .particles {
+  z-index: 0;
+}
+.slide.finale .particle {
+  background: var(--g3);
+  box-shadow: 0 0 12px var(--g3);
+  opacity: 0;
+}
+.slide.finale .particle.c1 { background: var(--g1); box-shadow: 0 0 12px rgba(248,98,51,0.5); }
+.slide.finale .particle.c2 { background: var(--g2); box-shadow: 0 0 12px rgba(218,68,110,0.5); }
+.slide.finale .particle.c3 { background: var(--g3); box-shadow: 0 0 12px rgba(188,37,169,0.5); }
+.slide.finale .particle.c4 { background: var(--g4); box-shadow: 0 0 12px rgba(134,31,203,0.5); }
+.slide.finale .particle.c5 { background: var(--g5); box-shadow: 0 0 12px rgba(82,28,228,0.5); }
+
+.watermark-spin {
+  animation: watermark-spin 60s linear infinite;
+  transform-origin: 70% 70%;
+  opacity: 0.18 !important;
+}
+@keyframes watermark-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.takk-shine .gradient-text {
+  animation: gradient-shimmer 6s linear infinite;
+}
+
+/* ============================================================
    ORCHESTRATOR PULSE — gentle breathing on diagram hub
    ============================================================ */
 .orch-pulse {
