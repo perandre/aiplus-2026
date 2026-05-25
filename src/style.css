@@ -813,28 +813,18 @@ body {
    ============================================================ */
 .media-frame {
   position: relative;
-  display: inline-flex;
+  display: flex;
+  width: 100%;
+  height: 100%;
   align-items: center;
   justify-content: center;
-  border-radius: var(--r-md);
-  overflow: hidden;
   background: transparent;
   isolation: isolate;
-  max-width: 100%;
-  max-height: 100%;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-    0 30px 60px -24px rgba(0, 0, 0, 0.5),
-    0 12px 40px -10px rgba(82, 28, 228, 0.35),
-    0 0 100px -20px rgba(248, 98, 51, 0.18);
 }
 
 .media-frame-inner {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
+  /* Layout-neutral wrapper — children flow as if inner wasn't here */
+  display: contents;
 }
 
 .media-frame img,
@@ -844,29 +834,36 @@ body {
   max-height: 100%;
   width: auto;
   height: auto;
+  object-fit: contain;
   background: transparent;
+  border-radius: var(--r-md);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 30px 60px -24px rgba(0, 0, 0, 0.5),
+    0 12px 40px -10px rgba(82, 28, 228, 0.35),
+    0 0 100px -20px rgba(248, 98, 51, 0.18);
 }
 
+/* Iframe variant: 16:9 box that fills available wrap height */
+.media-frame.media-frame--iframe {
+  align-items: center;
+  justify-content: center;
+}
 .media-frame iframe {
   display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: transparent;
-}
-
-/* Iframe variant: forces 16:9 frame that fills available height,
-   width derived from aspect-ratio. */
-.media-frame.media-frame--iframe {
   height: 100%;
   width: auto;
   aspect-ratio: 16 / 9;
   max-width: 100%;
   max-height: 100%;
-}
-.media-frame--iframe .media-frame-inner {
-  width: 100%;
-  height: 100%;
+  border: 0;
+  background: transparent;
+  border-radius: var(--r-md);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 30px 60px -24px rgba(0, 0, 0, 0.5),
+    0 12px 40px -10px rgba(82, 28, 228, 0.35),
+    0 0 100px -20px rgba(248, 98, 51, 0.18);
 }
 
 .media-frame .placeholder {
@@ -876,7 +873,9 @@ body {
   padding: var(--s-lg);
 }
 
-.slide.is-muted .media-frame {
+.slide.is-muted .media-frame img,
+.slide.is-muted .media-frame video,
+.slide.is-muted .media-frame iframe {
   box-shadow:
     inset 0 0 0 1px rgba(0, 0, 0, 0.06),
     0 30px 60px -24px rgba(0, 0, 0, 0.18),
