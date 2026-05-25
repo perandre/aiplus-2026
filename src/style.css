@@ -113,6 +113,66 @@ body {
 .suksess-5 { background: var(--g5); }
 
 /* ============================================================
+   BG VIDEO SLIDE — full-bleed video + dark gradient overlay
+   ============================================================ */
+.slide.bg-video {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  align-items: stretch;
+  justify-content: stretch;
+}
+.slide.bg-video .bg-video-el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: saturate(1.05) contrast(1.02);
+}
+.slide.bg-video .bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(135deg,
+      rgba(26, 0, 84, 0.78) 0%,
+      rgba(26, 0, 84, 0.55) 45%,
+      rgba(82, 28, 228, 0.55) 100%);
+  /* Subtle vignette for legibility */
+  box-shadow: inset 0 0 200px 60px rgba(0, 0, 0, 0.45);
+}
+.slide.bg-video .bg-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s-2xl);
+  padding: 6vmin 8vmin;
+  width: 100%;
+  height: 100%;
+}
+.slide.bg-video .om-frontkom-logo {
+  height: clamp(60px, 11cqh, 150px);
+  width: auto;
+  align-self: flex-start;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.4));
+}
+.slide.bg-video .om-frontkom-tag {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: clamp(40px, 7.5cqh, 90px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--on-dark);
+  margin: 0;
+  max-width: 24ch;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ============================================================
    CHAPTER DIVIDER — bare seksjonstittel, store og rolige
    ============================================================ */
 .slide.chapter-divider {

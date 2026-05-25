@@ -1,22 +1,19 @@
-import { slideShell, type Slide } from '../lib/slide';
+import type { Slide } from '../lib/slide';
 
 const slide: Slide = {
   id: 'om-frontkom',
   title: 'Om Frontkom',
-  render: () =>
-    slideShell(
-      `
-      <div class="eyebrow">Om Frontkom</div>
-      <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:var(--s-lg);">
-        <img src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" style="height:clamp(60px,9cqh,120px);width:auto;align-self:flex-start;" />
-        <p class="lead" style="margin-top:var(--s-xl);">
-          Digitalbyrå som leverer KI-løsninger til offentlig sektor og bedrifter —<br/>
-          fra digitale medarbeidere til automatisering.
-        </p>
+  render: () => `
+    <section class="slide bg-video">
+      <video class="bg-video-el" src="/media/frontkom-video.mp4" autoplay muted loop playsinline preload="auto"></video>
+      <div class="bg-overlay" aria-hidden="true"></div>
+      <div class="bg-content">
+        <div class="eyebrow">Om Frontkom</div>
+        <img class="om-frontkom-logo" src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" />
+        <h2 class="om-frontkom-tag">Partner for <span class="gradient-text">digital vekst og KI</span>.</h2>
       </div>
-      `,
-      { logo: false }
-    ),
+    </section>
+  `,
 };
 
 export default slide;
