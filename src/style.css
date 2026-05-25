@@ -410,12 +410,66 @@ body {
    GRADIENT TEXT (signature device)
    ============================================================ */
 .gradient-text {
+  background: linear-gradient(
+    90deg,
+    var(--g1) 0%, var(--g2) 20%, var(--g3) 40%,
+    var(--g4) 60%, var(--g5) 80%, var(--g1) 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shimmer 12s linear infinite;
+}
+@keyframes gradient-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Static (no shimmer) version when needed */
+.gradient-text-static {
   background: var(--gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
+/* ============================================================
+   FLOATING PARTICLES — for cover and takk
+   ============================================================ */
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.particle {
+  position: absolute;
+  bottom: -20px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: particle-float linear infinite;
+  filter: blur(0.4px);
+}
+@keyframes particle-float {
+  0%   { transform: translateY(0) translateX(0); opacity: 0; }
+  10%  { opacity: var(--peak-opacity, 0.7); }
+  50%  { transform: translateY(-50vh) translateX(calc(var(--drift, 0px) * 1)); }
+  90%  { opacity: var(--peak-opacity, 0.7); }
+  100% { transform: translateY(-110vh) translateX(calc(var(--drift, 0px) * 2)); opacity: 0; }
+}
+
+/* Particle colors keyed off CSS vars */
+.particle.c1 { background: var(--g1); box-shadow: 0 0 8px var(--g1); }
+.particle.c2 { background: var(--g2); box-shadow: 0 0 8px var(--g2); }
+.particle.c3 { background: var(--g3); box-shadow: 0 0 8px var(--g3); }
+.particle.c4 { background: var(--g4); box-shadow: 0 0 8px var(--g4); }
+.particle.c5 { background: var(--g5); box-shadow: 0 0 8px var(--g5); }
 
 .gradient-bar {
   height: 6px;
