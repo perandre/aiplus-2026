@@ -113,6 +113,42 @@ body {
 .suksess-5 { background: var(--g5); }
 
 /* ============================================================
+   DRAMATIC ZOOM — for hero "Tenk større"
+   ============================================================ */
+.slide.hero.zoom-in {
+  perspective: 1500px;
+}
+.slide.hero.zoom-in .hero-text {
+  animation: dramatic-zoom 1500ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center center;
+}
+@keyframes dramatic-zoom {
+  0%   { opacity: 0; transform: scale(0.18) translateZ(-300px); filter: blur(28px); letter-spacing: 0.4em; }
+  40%  { opacity: 1; filter: blur(6px); letter-spacing: 0.1em; }
+  100% { opacity: 1; transform: scale(1) translateZ(0); filter: blur(0); letter-spacing: -0.025em; }
+}
+
+/* ============================================================
+   SUKSESS-LIST progressive reveal — each row slides + dot pops
+   ============================================================ */
+.suksess-list li {
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 480ms ease, transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.suksess-list li.in {
+  opacity: 1;
+  transform: none;
+}
+.suksess-dot {
+  transform: scale(0);
+  transition: transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1) 120ms;
+}
+.suksess-list li.in .suksess-dot {
+  transform: scale(1);
+}
+
+/* ============================================================
    NUMBER COUNTER — live counting numbers in captions
    ============================================================ */
 .num-counter {

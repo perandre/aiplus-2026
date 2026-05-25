@@ -17,6 +17,15 @@ const slide: Slide = {
       </ul>
       `
     ),
+  onMount(root) {
+    const items = root.querySelectorAll<HTMLLIElement>('.suksess-list li');
+    const timeouts: number[] = [];
+    items.forEach((li, i) => {
+      const id = window.setTimeout(() => li.classList.add('in'), 420 + i * 280);
+      timeouts.push(id);
+    });
+    return () => timeouts.forEach((id) => clearTimeout(id));
+  },
 };
 
 export default slide;
