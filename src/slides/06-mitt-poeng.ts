@@ -1,17 +1,15 @@
 import type { Slide } from '../lib/slide';
 
 const slide: Slide = {
-  id: 'mitt-poeng',
-  title: 'Mitt poeng — tenk større',
+  id: 'inspirasjon',
+  title: 'Inspirasjon — tenk større om chatbot-prosjektet',
   render: () => `
     <section class="slide statement">
-      <div class="eyebrow">Mitt poeng</div>
+      <div class="eyebrow">Inspirasjon</div>
       <h1 class="statement-text">
-        Tenk <span class="gradient-text">større</span> rundt hvert chatbot-prosjekt.
+        Tenk <span class="gradient-text">større</span><br/>
+        om chatbot-prosjektet deres!
       </h1>
-      <p class="statement-sub">
-        Ikke bare enda en OK chatbot.
-      </p>
       <div class="slide-logo"><img src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" /></div>
     </section>
   `,
