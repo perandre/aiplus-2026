@@ -21,7 +21,7 @@ const slide: Slide = {
         ${mediaFrame({ src: '/media/privacy-sanitization.png', alt: 'Persondata anonymisert før LLM' })}
       </div>
       <div class="media-bottom">
-        <p class="media-caption">LLM-er med DPA. Stopper persondata FØR de når LLM.</p>
+        <p class="media-caption">Stopper persondata FØR de når LLM.</p>
         <img class="slide-logo" src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" />
       </div>
     </section>
