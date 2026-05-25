@@ -68,3 +68,43 @@ export const slides: Slide[] = [
   takeAways,
   takkQa,
 ];
+
+/**
+ * Per-slide auto-advance durations (seconds). Used when 'f' starts the session timer.
+ * Sum is ~1050s = ~17:30, leaving ~2:30 buffer of a 20-min slot for Q&A onset.
+ */
+const SLIDE_DURATIONS: Record<string, number> = {
+  cover: 25,
+  'om-meg': 25,
+  'om-frontkom': 30,
+  'hvorfor-enda-en-chat': 30,
+  'chatbots-glimrende': 20,
+  inspirasjon: 20,
+  '2-mal-idag': 30,
+  'reis-nordland-intro': 20,
+  'hook-reis-video': 110,
+  finalist: 15,
+  suksessfaktorer: 25,
+  'teknologisk-fleksibilitet': 25,
+  reiseplanlegger: 50,
+  'datadrevet-innsikt': 50,
+  'personvern-forst': 60,
+  monitorering: 45,
+  vedlikehold: 45,
+  kildegrensesnitt: 40,
+  'tenk-storre': 15,
+  'nfk-5-agenter': 25,
+  'chapter-ki-lag': 12,
+  'illustrasjon-5-agenter': 40,
+  'ki-lag-for-brukerreisen': 50,
+  'grensesnitt-ai-sok': 40,
+  'grensesnitt-studierad': 40,
+  'grensesnitt-feedback': 40,
+  'andre-grensesnitt': 30,
+  'take-aways': 30,
+  qa: 60,
+};
+
+for (const slide of slides) {
+  slide.durationSec = SLIDE_DURATIONS[slide.id] ?? 30;
+}

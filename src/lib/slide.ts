@@ -1,6 +1,8 @@
 export interface Slide {
   id: string;
   title: string;
+  /** Auto-advance duration in seconds (used when presentation session is active). */
+  durationSec?: number;
   render: () => string;
   onMount?: (root: HTMLElement) => void | (() => void);
 }
@@ -22,7 +24,9 @@ function youtubeEmbedUrl(src: string): string | null {
   const id = m[1];
   const params = new URLSearchParams({
     autoplay: '1',
-    mute: '1',
+    // mute=0 so the speaker hears sound when they click play.
+    // (Most browsers won't honor autoplay with sound, so presenter clicks once.)
+    mute: '0',
     loop: '1',
     playlist: id,
     controls: '1',

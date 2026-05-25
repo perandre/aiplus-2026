@@ -8,6 +8,8 @@ export interface NavController {
   total(): number;
 }
 
+const DEFAULT_DURATION_SEC = 30;
+
 export function createNav(slides: Slide[], stage: HTMLElement): NavController {
   let index = 0;
   let cleanup: (() => void) | undefined;
@@ -16,7 +18,75 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
   const nextBtn = document.getElementById('next') as HTMLButtonElement;
   const counter = document.getElementById('counter') as HTMLElement;
   const progressBar = document.getElementById('progress-bar') as HTMLElement;
+  const sessionTimerEl = document.getElementById('session-timer') as HTMLElement;
 
+  // ---------- Auto-advance session ----------
+  const totalDurationSec = slides.reduce(
+    (sum, s) => sum + (s.durationSec ?? DEFAULT_DURATION_SEC),
+    0
+  );
+
+  const session = {
+    startedAt: 0,           // performance.now() when session started
+    slideTimer: 0,          // setTimeout id for current slide auto-advance
+    countdownTimer: 0,      // setInterval id for visual countdown
+  };
+
+  function sessionIsActive(): boolean {
+    return session.startedAt > 0;
+  }
+
+  function scheduleAdvance() {
+    clearTimeout(session.slideTimer);
+    if (!sessionIsActive()) return;
+    if (index >= slides.length - 1) return; // don't advance past last slide
+    const dur = (slides[index].durationSec ?? DEFAULT_DURATION_SEC) * 1000;
+    session.slideTimer = window.setTimeout(() => {
+      session.slideTimer = 0;
+      next();
+    }, dur);
+  }
+
+  function updateCountdown() {
+    if (!sessionIsActive()) {
+      sessionTimerEl.textContent = '';
+      sessionTimerEl.classList.remove('is-active');
+      return;
+    }
+    const elapsedSec = (performance.now() - session.startedAt) / 1000;
+    const remaining = Math.max(0, totalDurationSec - elapsedSec);
+    const mins = Math.floor(remaining / 60);
+    const secs = Math.floor(remaining % 60);
+    sessionTimerEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    sessionTimerEl.classList.add('is-active');
+    // Warning tone when under 2 min
+    sessionTimerEl.classList.toggle('is-low', remaining < 120);
+    sessionTimerEl.classList.toggle('is-out', remaining <= 0);
+  }
+
+  function startSession() {
+    stopSession();
+    session.startedAt = performance.now();
+    session.countdownTimer = window.setInterval(updateCountdown, 1000);
+    updateCountdown();
+    scheduleAdvance();
+  }
+
+  function stopSession() {
+    clearTimeout(session.slideTimer);
+    clearInterval(session.countdownTimer);
+    session.slideTimer = 0;
+    session.countdownTimer = 0;
+    session.startedAt = 0;
+    updateCountdown();
+  }
+
+  function restartSession() {
+    stopSession();
+    startSession();
+  }
+
+  // ---------- Slide rendering & navigation ----------
   function readHash(): number {
     const m = location.hash.match(/^#(\d+)/);
     if (!m) return 0;
@@ -48,6 +118,8 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
     progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
     document.title = `${slide.title} — Frontkom @ AI+Offentlig sektor`;
     writeHash(index);
+    // Always re-schedule the per-slide timer (cancels any previous one)
+    scheduleAdvance();
   }
 
   function go(n: number) {
@@ -89,10 +161,19 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
         break;
       case 'f':
       case 'F':
-        if (document.fullscreenElement) {
-          document.exitFullscreen();
+        // On slide 1: ensure fullscreen + (re)start the session timer.
+        // On any other slide: standard fullscreen toggle, leave session alone.
+        if (index === 0) {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          }
+          restartSession();
         } else {
-          document.documentElement.requestFullscreen().catch(() => {});
+          if (document.fullscreenElement) {
+            document.exitFullscreen();
+          } else {
+            document.documentElement.requestFullscreen().catch(() => {});
+          }
         }
         break;
     }
