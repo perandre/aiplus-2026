@@ -6,8 +6,8 @@ const slide: Slide = {
   render: () =>
     mediaSlide({
       eyebrow: 'Overflate 3 · Interaktiv guide',
-      src: '/media/ai-study-guide.png',
-      alt: 'ONH studieguide',
+      src: '/media/studievelger.gif',
+      alt: 'ONH studievelger i bruk',
       caption: 'Oslo Nye Høyskole — interaktiv studierådgiver.',
     }),
 };
