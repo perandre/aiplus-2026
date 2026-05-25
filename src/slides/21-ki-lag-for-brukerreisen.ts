@@ -22,13 +22,52 @@ const slide: Slide = {
 
           <!-- Forbindelser fra core til overflater (under nodene) -->
           <g class="ki-edges" stroke-width="1.6" fill="none" opacity="0.4">
-            <line x1="600" y1="170" x2="600" y2="80" stroke="#DA446E"/>
-            <line x1="685" y1="200" x2="950" y2="100" stroke="#BC25A9"/>
-            <line x1="705" y1="270" x2="1015" y2="270" stroke="#A123BC"/>
-            <line x1="685" y1="340" x2="950" y2="450" stroke="#861FCB"/>
-            <line x1="600" y1="370" x2="600" y2="430" stroke="#F86233" stroke-width="2.2" opacity="0.6"/>
-            <line x1="515" y1="340" x2="230" y2="450" stroke="#521CE4"/>
-            <line x1="495" y1="270" x2="195" y2="270" stroke="#4F1BE5"/>
+            <path id="kil-edge-0" d="M 600 170 L 600 80" stroke="#DA446E"/>
+            <path id="kil-edge-1" d="M 685 200 L 950 100" stroke="#BC25A9"/>
+            <path id="kil-edge-2" d="M 705 270 L 1015 270" stroke="#A123BC"/>
+            <path id="kil-edge-3" d="M 685 340 L 950 450" stroke="#861FCB"/>
+            <path id="kil-edge-4" d="M 600 370 L 600 430" stroke="#F86233" stroke-width="2.2" opacity="0.6"/>
+            <path id="kil-edge-5" d="M 515 340 L 230 450" stroke="#521CE4"/>
+            <path id="kil-edge-6" d="M 495 270 L 195 270" stroke="#4F1BE5"/>
+          </g>
+
+          <!-- Flow particles — små prikker som beveger seg langs hver edge utover fra KI-laget -->
+          <g class="ki-flow" aria-hidden="true">
+            <circle r="3.5" fill="#DA446E" opacity="0.95">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="0s">
+                <mpath href="#kil-edge-0"/>
+              </animateMotion>
+            </circle>
+            <circle r="3.5" fill="#BC25A9" opacity="0.95">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.34s">
+                <mpath href="#kil-edge-1"/>
+              </animateMotion>
+            </circle>
+            <circle r="3.5" fill="#A123BC" opacity="0.95">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="0.68s">
+                <mpath href="#kil-edge-2"/>
+              </animateMotion>
+            </circle>
+            <circle r="3.5" fill="#861FCB" opacity="0.95">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.02s">
+                <mpath href="#kil-edge-3"/>
+              </animateMotion>
+            </circle>
+            <circle r="4" fill="#F86233" opacity="1">
+              <animateMotion dur="2.0s" repeatCount="indefinite" begin="1.36s">
+                <mpath href="#kil-edge-4"/>
+              </animateMotion>
+            </circle>
+            <circle r="3.5" fill="#521CE4" opacity="0.95">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="1.7s">
+                <mpath href="#kil-edge-5"/>
+              </animateMotion>
+            </circle>
+            <circle r="3.5" fill="#4F1BE5" opacity="0.95">
+              <animateMotion dur="2.4s" repeatCount="indefinite" begin="2.04s">
+                <mpath href="#kil-edge-6"/>
+              </animateMotion>
+            </circle>
           </g>
 
           <!-- Sub-agent-linjer fra Chat -->
@@ -41,7 +80,7 @@ const slide: Slide = {
 
           <!-- Kjerne: kunnskapsgrunnlaget -->
           <g class="ki-core">
-            <circle cx="600" cy="270" r="130" fill="url(#kil-grad)" filter="url(#kil-soft)" opacity="0.4"/>
+            <circle class="orch-pulse" cx="600" cy="270" r="130" fill="url(#kil-grad)" filter="url(#kil-soft)" opacity="0.4"/>
             <circle cx="600" cy="270" r="105" fill="#1A0054" stroke="url(#kil-grad)" stroke-width="3"/>
             <text x="600" y="258" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="26">KI-lag</text>
             <text x="600" y="285" text-anchor="middle" fill="#C8B5FF" font-family="Red Hat Text" font-size="15">kuraterte kilder</text>
