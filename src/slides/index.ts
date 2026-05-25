@@ -1,82 +1,68 @@
 import type { Slide } from '../lib/slide';
 
-// PART 1 — Hook & proof
+// DEL 1 — INTRO
 import cover from './01-cover';
-import hook from './02-hook';
-import nfkAmbition from './03-nfk-ambition';
+import omMeg from './02-om-meg';
+import omFrontkom from './03-om-frontkom';
+import hvorforEnda from './04-hvorfor-enda-en-chat';
+import chatbotsGlimrende from './05-chatbots-glimrende';
+import mittPoeng from './06-mitt-poeng';
+import toMalIdag from './07-2-mal-idag';
 
-// PART 2 — Pedagogisk build-up
-import scenarioOneBot from './04-scenario-one-bot';
-import scenarioManyBots from './05-scenario-many-bots';
-import subAgentsHint from './06-sub-agents-hint';
-import manyChannels from './07-many-channels';
+// DEL 2 — REIS NORDLAND + SUKSESSFAKTORER
+import reisIntro from './08-reis-nordland-intro';
+import video from './09-video';
+import finalist from './10-finalist';
+import suksessfaktorer from './11-suksessfaktorer';
+import teknologiskFleksibilitet from './12-teknologisk-fleksibilitet';
+import kildegrensesnitt from './13-kildegrensesnitt';
+import datadrevetInnsikt from './14-datadrevet-innsikt';
+import personvernForst from './15-personvern-forst';
+import monitorering from './16-monitorering';
+import vedlikehold from './17-vedlikehold';
 
-// PART 3 — Revelasjonen
-import revelationStrike from './08-revelation-strike';
-import revelationKiLag from './09-revelation-ki-lag';
-import kiLagDiagram from './10-ki-lag-diagram';
+// DEL 3 — TENK STØRRE
+import tenkStorre from './18-tenk-storre';
+import nfk5Agenter from './19-nfk-5-agenter';
+import illustrasjon5 from './20-illustrasjon-5-agenter';
+import kiLagForBrukerreisen from './21-ki-lag-for-brukerreisen';
+import overflateAiSok from './22-overflate-ai-sok';
+import overflateStudieguide from './23-overflate-studieguide';
+import overflateFeedback from './24-overflate-feedback';
+import overflateAutomation from './25-overflate-automation';
+import overflateFuture from './26-overflate-future';
 
-// PART 4 — Overflater
-import overflateChat from './11-overflate-chat';
-import overflateAiSok from './12-overflate-ai-sok';
-import overflateStudieguide from './13-overflate-studieguide';
-import overflateFeedback from './14-overflate-feedback';
-import overflateAutomation from './15-overflate-automation';
-import overflateFuture from './16-overflate-future';
-
-// PART 5 — Tips
-import tipsPivot from './17-tips-pivot';
-import tips1 from './18-tip1-statement';
-import tips1Workspace from './19-tip1-workspace';
-import tips1Analytics from './20-tip1-analytics';
-import tips2 from './21-tip2-statement';
-import tips2Instructions from './22-tip2-instructions';
-import tips3 from './23-tip3-statement';
-import tips3Kilder from './24-tip3-kilder';
-import tips4 from './25-tip4-statement';
-import tips4Personvern from './26-tip4-personvern';
-import tips5 from './27-tip5-statement';
-import tips5Notes from './28-tip5-notes';
-import tips6 from './29-tip6-statement';
-import tips7 from './30-tip7-statement';
-
-// PART 6 — Avslutning
-import workshops from './31-workshops';
-import takeaways from './32-takeaways';
-import qa from './33-qa';
+// DEL 4 — AVSLUTNING
+import takeAways from './27-take-aways';
+import takkQa from './28-takk-qa';
 
 export const slides: Slide[] = [
   cover,
-  hook,
-  nfkAmbition,
-  scenarioOneBot,
-  scenarioManyBots,
-  subAgentsHint,
-  manyChannels,
-  revelationStrike,
-  revelationKiLag,
-  kiLagDiagram,
-  overflateChat,
+  omMeg,
+  omFrontkom,
+  hvorforEnda,
+  chatbotsGlimrende,
+  mittPoeng,
+  toMalIdag,
+  reisIntro,
+  video,
+  finalist,
+  suksessfaktorer,
+  teknologiskFleksibilitet,
+  kildegrensesnitt,
+  datadrevetInnsikt,
+  personvernForst,
+  monitorering,
+  vedlikehold,
+  tenkStorre,
+  nfk5Agenter,
+  illustrasjon5,
+  kiLagForBrukerreisen,
   overflateAiSok,
   overflateStudieguide,
   overflateFeedback,
   overflateAutomation,
   overflateFuture,
-  tipsPivot,
-  tips1,
-  tips1Workspace,
-  tips1Analytics,
-  tips2,
-  tips2Instructions,
-  tips3,
-  tips3Kilder,
-  tips4,
-  tips4Personvern,
-  tips5,
-  tips5Notes,
-  tips6,
-  tips7,
-  workshops,
-  takeaways,
-  qa,
+  takeAways,
+  takkQa,
 ];

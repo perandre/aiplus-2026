@@ -80,6 +80,72 @@ body {
 }
 
 /* ============================================================
+   SUKSESS LIST — for suksessfaktorer overview slide
+   ============================================================ */
+.suksess-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--s-xl) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2cqh, 24px);
+  font-size: clamp(22px, 3.4cqh, 40px);
+  color: var(--on-dark);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.suksess-list li {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.2cqh, 28px);
+}
+.suksess-dot {
+  display: inline-block;
+  width: clamp(14px, 2cqh, 22px);
+  height: clamp(14px, 2cqh, 22px);
+  border-radius: var(--r-full);
+  flex-shrink: 0;
+}
+.suksess-1 { background: var(--g1); }
+.suksess-2 { background: var(--g2); }
+.suksess-3 { background: var(--g3); }
+.suksess-4 { background: var(--g4); }
+.suksess-5 { background: var(--g5); }
+
+/* ============================================================
+   AGENDA LIST — for "2 mål i dag"-slide
+   ============================================================ */
+.agenda {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.4cqh, 32px);
+  font-size: clamp(22px, 3.6cqh, 44px);
+  color: var(--on-dark-muted);
+  line-height: 1.3;
+}
+.agenda li {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(16px, 2.2cqh, 28px);
+}
+.agenda-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(48px, 7cqh, 80px);
+  height: clamp(48px, 7cqh, 80px);
+  border-radius: var(--r-full);
+  background: var(--gradient);
+  color: var(--bg-dark);
+  font-weight: 700;
+  font-size: clamp(20px, 3cqh, 36px);
+  flex-shrink: 0;
+}
+
+/* ============================================================
    CHANNEL LIST — for slide "Det er ikke bare chat"
    ============================================================ */
 .channel-list {

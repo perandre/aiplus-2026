@@ -1,11 +1,11 @@
 import type { Slide } from '../lib/slide';
 
 const slide: Slide = {
-  id: 'revelation-ki-lag',
-  title: 'Lag et KI-lag for hele brukerreisen.',
+  id: 'tenk-storre',
+  title: 'Tenk større',
   render: () =>
     `<section class="slide hero">
-      <h1 class="hero-text">Lag et <span class="gradient-text">KI-lag</span><br/>for hele brukerreisen.</h1>
+      <h1 class="hero-text">Tenk <span class="gradient-text">større</span>.</h1>
       <div class="slide-logo"><img src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" /></div>
     </section>`,
 };

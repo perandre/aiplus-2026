@@ -1,11 +1,11 @@
 import type { Slide } from '../lib/slide';
 
 const slide: Slide = {
-  id: 'ki-lag-diagram',
-  title: 'Ett kunnskapsgrunnlag. Mange overflater.',
+  id: 'ki-lag-for-brukerreisen',
+  title: 'Et KI-lag for hele brukerreisen',
   render: () => `
     <section class="slide">
-      <div class="eyebrow">Hva er et KI-lag?</div>
+      <div class="eyebrow">Et KI-lag for hele brukerreisen</div>
       <h2 class="h1">Ett <span class="gradient-text">kunnskapsgrunnlag</span>. Mange overflater.</h2>
       <div class="diagram" id="ki-lag-svg">
         <svg viewBox="0 0 1200 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KI-lag med 7 overflater og 4 chat-sub-agenter">
