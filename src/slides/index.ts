@@ -15,26 +15,27 @@ import video from './09-video';
 import finalist from './10-finalist';
 import suksessfaktorer from './11-suksessfaktorer';
 import teknologiskFleksibilitet from './12-teknologisk-fleksibilitet';
-import kildegrensesnitt from './13-kildegrensesnitt';
+import reiseplanlegger from './13-reiseplanlegger';
 import datadrevetInnsikt from './14-datadrevet-innsikt';
 import personvernForst from './15-personvern-forst';
 import monitorering from './16-monitorering';
 import vedlikehold from './17-vedlikehold';
+import kildegrensesnitt from './18-kildegrensesnitt';
 
 // DEL 3 — TENK STØRRE
-import tenkStorre from './18-tenk-storre';
-import nfk5Agenter from './19-nfk-5-agenter';
-import illustrasjon5 from './20-illustrasjon-5-agenter';
-import kiLagForBrukerreisen from './21-ki-lag-for-brukerreisen';
-import overflateAiSok from './22-overflate-ai-sok';
-import overflateStudieguide from './23-overflate-studieguide';
-import overflateFeedback from './24-overflate-feedback';
-import overflateAutomation from './25-overflate-automation';
-import overflateFuture from './26-overflate-future';
+import tenkStorre from './19-tenk-storre';
+import nfk5Agenter from './20-nfk-5-agenter';
+import illustrasjon5 from './21-illustrasjon-5-agenter';
+import kiLagForBrukerreisen from './22-ki-lag-for-brukerreisen';
+import overflateAiSok from './23-overflate-ai-sok';
+import overflateStudieguide from './24-overflate-studieguide';
+import overflateFeedback from './25-overflate-feedback';
+import overflateAutomation from './26-overflate-automation';
+import overflateFuture from './27-overflate-future';
 
 // DEL 4 — AVSLUTNING
-import takeAways from './27-take-aways';
-import takkQa from './28-takk-qa';
+import takeAways from './28-take-aways';
+import takkQa from './29-takk-qa';
 
 export const slides: Slide[] = [
   cover,
@@ -49,11 +50,12 @@ export const slides: Slide[] = [
   finalist,
   suksessfaktorer,
   teknologiskFleksibilitet,
-  kildegrensesnitt,
+  reiseplanlegger,
   datadrevetInnsikt,
   personvernForst,
   monitorering,
   vedlikehold,
+  kildegrensesnitt,
   tenkStorre,
   nfk5Agenter,
   illustrasjon5,
