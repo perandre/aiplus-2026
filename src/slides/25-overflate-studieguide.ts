@@ -1,14 +1,14 @@
 import { mediaSlide, type Slide } from '../lib/slide';
 
 const slide: Slide = {
-  id: 'overflate-studieguide',
-  title: 'Overflate: Studieguide',
+  id: 'grensesnitt-studierad',
+  title: 'Grensesnitt: Studierådgiver',
   render: () =>
     mediaSlide({
-      eyebrow: 'Overflate 3 · Interaktiv guide',
+      eyebrow: 'Grensesnitt · Studierådgiver',
       src: '/media/studievelger.gif',
       alt: 'ONH studievelger i bruk',
-      caption: 'Oslo Nye Høyskole — interaktiv studierådgiver.',
+      caption: 'Studierådgiver (med samme kunnskapsdatabase som chatbot).',
     }),
 };
 

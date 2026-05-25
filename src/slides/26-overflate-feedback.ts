@@ -1,14 +1,14 @@
 import { mediaSlide, type Slide } from '../lib/slide';
 
 const slide: Slide = {
-  id: 'overflate-feedback',
-  title: 'Overflate: Feedback',
+  id: 'grensesnitt-feedback',
+  title: 'Grensesnitt: Feedback',
   render: () =>
     mediaSlide({
-      eyebrow: 'Overflate 4 · Feedback',
+      eyebrow: 'Grensesnitt · Feedback',
       src: '/media/ai-feedback-widget.gif',
       alt: 'Fant du det du lette etter?',
-      caption: '"Fant du det du lette etter?" — gull i kunnskapsgapene.',
+      caption: '"Fant du det du lette etter?" — med hjelpsom oppfølging basert på kunnskapsdatabasen fra chatbot.',
     }),
 };
 
