@@ -113,6 +113,45 @@ body {
 .suksess-5 { background: var(--g5); }
 
 /* ============================================================
+   CHAPTER DIVIDER — bare seksjonstittel, store og rolige
+   ============================================================ */
+.slide.chapter-divider {
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 8vmin 8vmin;
+}
+.slide.chapter-divider .chapter-text {
+  font-family: var(--font-text);
+  font-weight: 700;
+  font-size: clamp(70px, 14cqh, 180px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+  align-self: center;
+  text-align: center;
+  max-width: 22ch;
+  animation: chapter-fade-in 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes chapter-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+.slide.chapter-divider .chapter-bar {
+  height: 4px;
+  width: 100%;
+  background: var(--gradient);
+  background-size: 200% 100%;
+  animation: gradient-shimmer 12s linear infinite, chapter-bar-grow 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left center;
+  border-radius: var(--r-full);
+}
+@keyframes chapter-bar-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.chapter-bar-bottom { transform-origin: right center; }
+
+/* ============================================================
    FINALE — slow watermark spin + particle layer on Takk-slide
    ============================================================ */
 .slide.finale {

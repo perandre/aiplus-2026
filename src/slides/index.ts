@@ -25,17 +25,18 @@ import kildegrensesnitt from './18-kildegrensesnitt';
 // DEL 3 — TENK STØRRE
 import tenkStorre from './19-tenk-storre';
 import nfk5Agenter from './20-nfk-5-agenter';
-import illustrasjon5 from './21-illustrasjon-5-agenter';
-import kiLagForBrukerreisen from './22-ki-lag-for-brukerreisen';
-import overflateAiSok from './23-overflate-ai-sok';
-import overflateStudieguide from './24-overflate-studieguide';
-import overflateFeedback from './25-overflate-feedback';
-import overflateAutomation from './26-overflate-automation';
-import overflateFuture from './27-overflate-future';
+import chapterKiLag from './21-chapter-ki-lag';
+import illustrasjon5 from './22-illustrasjon-5-agenter';
+import kiLagForBrukerreisen from './23-ki-lag-for-brukerreisen';
+import overflateAiSok from './24-overflate-ai-sok';
+import overflateStudieguide from './25-overflate-studieguide';
+import overflateFeedback from './26-overflate-feedback';
+import overflateAutomation from './27-overflate-automation';
+import overflateFuture from './28-overflate-future';
 
 // DEL 4 — AVSLUTNING
-import takeAways from './28-take-aways';
-import takkQa from './29-takk-qa';
+import takeAways from './29-take-aways';
+import takkQa from './30-takk-qa';
 
 export const slides: Slide[] = [
   cover,
@@ -58,6 +59,7 @@ export const slides: Slide[] = [
   kildegrensesnitt,
   tenkStorre,
   nfk5Agenter,
+  chapterKiLag,
   illustrasjon5,
   kiLagForBrukerreisen,
   overflateAiSok,
