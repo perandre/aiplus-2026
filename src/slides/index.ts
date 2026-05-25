@@ -74,13 +74,13 @@ export const slides: Slide[] = [
  * Sum is ~1050s = ~17:30, leaving ~2:30 buffer of a 20-min slot for Q&A onset.
  */
 const SLIDE_DURATIONS: Record<string, number> = {
-  cover: 25,
-  'om-meg': 25,
-  'om-frontkom': 30,
-  'hvorfor-enda-en-chat': 30,
-  'chatbots-glimrende': 20,
-  inspirasjon: 20,
-  '2-mal-idag': 30,
+  cover: 12,
+  'om-meg': 15,
+  'om-frontkom': 20,
+  'hvorfor-enda-en-chat': 18,
+  'chatbots-glimrende': 15,
+  inspirasjon: 12,
+  '2-mal-idag': 18,
   'reis-nordland-intro': 20,
   'hook-reis-video': 110,
   finalist: 15,
