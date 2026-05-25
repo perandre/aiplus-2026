@@ -28,15 +28,14 @@ import nfk5Agenter from './20-nfk-5-agenter';
 import chapterKiLag from './21-chapter-ki-lag';
 import illustrasjon5 from './22-illustrasjon-5-agenter';
 import kiLagForBrukerreisen from './23-ki-lag-for-brukerreisen';
-import overflateAiSok from './24-overflate-ai-sok';
-import overflateStudieguide from './25-overflate-studieguide';
-import overflateFeedback from './26-overflate-feedback';
-import overflateAutomation from './27-overflate-automation';
-import overflateFuture from './28-overflate-future';
+import grensesnittAiSok from './24-overflate-ai-sok';
+import grensesnittStudierad from './25-overflate-studieguide';
+import grensesnittFeedback from './26-overflate-feedback';
+import andreGrensesnitt from './27-andre-grensesnitt';
 
 // DEL 4 — AVSLUTNING
-import takeAways from './29-take-aways';
-import takkQa from './30-takk-qa';
+import takeAways from './28-take-aways';
+import takkQa from './29-takk-qa';
 
 export const slides: Slide[] = [
   cover,
@@ -62,11 +61,10 @@ export const slides: Slide[] = [
   chapterKiLag,
   illustrasjon5,
   kiLagForBrukerreisen,
-  overflateAiSok,
-  overflateStudieguide,
-  overflateFeedback,
-  overflateAutomation,
-  overflateFuture,
+  grensesnittAiSok,
+  grensesnittStudierad,
+  grensesnittFeedback,
+  andreGrensesnitt,
   takeAways,
   takkQa,
 ];
