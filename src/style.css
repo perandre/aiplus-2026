@@ -122,18 +122,25 @@ body {
   align-items: stretch;
   justify-content: stretch;
 }
+/* Video and overlay break out of the slide's 16:9 letterbox so they cover
+   the ENTIRE viewport — no indigo bands around the 16:9 area. They're still
+   children of the slide section, so they unmount cleanly when the slide changes. */
 .slide.bg-video .bg-video-el {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
   z-index: 0;
   filter: saturate(1.05) contrast(1.02);
 }
 .slide.bg-video .bg-overlay {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: 1;
   background:
     linear-gradient(135deg,
