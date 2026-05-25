@@ -2,11 +2,10 @@ import type { Slide } from '../lib/slide';
 
 const slide: Slide = {
   id: 'ki-lag-for-brukerreisen',
-  title: 'Et KI-lag for hele brukerreisen',
+  title: 'Kunnskapsdatabasen for chatbot gjenbrukes for flere kanaler',
   render: () => `
     <section class="slide">
-      <div class="eyebrow">Et KI-lag for hele brukerreisen</div>
-      <h2 class="h1">Ett <span class="gradient-text">kunnskapsgrunnlag</span>. Mange overflater.</h2>
+      <h2 class="h1">Kunnskapsdatabasen for chatbot <span class="gradient-text">gjenbrukes for flere kanaler</span>.</h2>
       <div class="diagram" id="ki-lag-svg">
         <svg viewBox="0 0 1200 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KI-lag med 7 overflater og 4 chat-sub-agenter">
           <defs>
@@ -70,12 +69,12 @@ const slide: Slide = {
             </circle>
           </g>
 
-          <!-- Sub-agent-linjer fra Chat -->
+          <!-- Sub-agent-linjer fra Chat (oppdaterte posisjoner) -->
           <g class="ki-subedges" stroke-width="1.3" fill="none" opacity="0.5">
-            <line x1="560" y1="490" x2="490" y2="555" stroke="#F86233"/>
-            <line x1="580" y1="500" x2="565" y2="555" stroke="#DA446E"/>
-            <line x1="620" y1="500" x2="645" y2="555" stroke="#861FCB"/>
-            <line x1="640" y1="490" x2="720" y2="555" stroke="#521CE4"/>
+            <path d="M 510 492 L 420 545" stroke="#F86233"/>
+            <path d="M 560 492 L 520 545" stroke="#DA446E"/>
+            <path d="M 640 492 L 645 545" stroke="#861FCB"/>
+            <path d="M 690 492 L 765 545" stroke="#521CE4"/>
           </g>
 
           <!-- Kjerne: kunnskapsgrunnlaget -->
@@ -87,66 +86,59 @@ const slide: Slide = {
             <text x="600" y="305" text-anchor="middle" fill="#C8B5FF" font-family="Red Hat Text" font-size="15">orkestrering · sanering</text>
           </g>
 
-          <!-- 7 overflater rundt -->
+          <!-- 7 overflater rundt (uten subtittel) -->
           <g class="ki-surface" data-i="0">
             <rect x="495" y="20" width="210" height="64" rx="18" fill="rgba(218,68,110,0.15)" stroke="#DA446E"/>
-            <text x="600" y="49" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="17">🔍 AI-søk</text>
-            <text x="600" y="71" text-anchor="middle" fill="#C8B5FF" font-family="Red Hat Text" font-size="12">NMBU</text>
+            <text x="600" y="58" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="19">🔍 AI-søk</text>
           </g>
 
           <g class="ki-surface" data-i="1">
             <rect x="840" y="50" width="220" height="64" rx="18" fill="rgba(188,37,169,0.15)" stroke="#BC25A9"/>
-            <text x="950" y="79" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="17">🎓 Studieguide</text>
-            <text x="950" y="101" text-anchor="middle" fill="#C8B5FF" font-family="Red Hat Text" font-size="12">Oslo Nye Høyskole</text>
+            <text x="950" y="88" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="19">🎓 Studieguide</text>
           </g>
 
           <g class="ki-surface" data-i="2">
             <rect x="1015" y="240" width="170" height="64" rx="18" fill="rgba(161,35,188,0.15)" stroke="#A123BC"/>
-            <text x="1100" y="269" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="17">👍 Feedback</text>
-            <text x="1100" y="291" text-anchor="middle" fill="#C8B5FF" font-family="Red Hat Text" font-size="11">"Fant du svaret?"</text>
+            <text x="1100" y="278" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="19">👍 Feedback</text>
           </g>
 
           <g class="ki-surface" data-i="3">
             <rect x="830" y="418" width="245" height="64" rx="18" fill="rgba(134,31,203,0.15)" stroke="#861FCB"/>
-            <text x="952" y="447" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="16">⚡ Automatiseringsflyt</text>
-            <text x="952" y="469" text-anchor="middle" fill="#C8B5FF" font-family="Red Hat Text" font-size="12">saksbehandling</text>
+            <text x="952" y="456" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="18">⚡ Automatiseringsflyt</text>
           </g>
 
-          <!-- Chat — større, med sub-agenter under -->
+          <!-- Chat — uten subtittel -->
           <g class="ki-surface ki-surface-chat" data-i="4">
             <rect x="475" y="420" width="250" height="72" rx="20" fill="rgba(248,98,51,0.2)" stroke="#F86233" stroke-width="2"/>
-            <text x="600" y="450" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="19">💬 Chat</text>
-            <text x="600" y="476" text-anchor="middle" fill="#FCE7DD" font-family="Red Hat Text" font-size="13">4 fagagenter</text>
+            <text x="600" y="463" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="22">💬 Chat</text>
           </g>
 
-          <!-- 4 Sub-agenter under Chat -->
+          <!-- 4 Sub-agenter under Chat — spredt sa de ikke overlapper -->
           <g class="ki-subagent" data-i="0">
-            <rect x="447" y="545" width="86" height="34" rx="14" fill="rgba(248,98,51,0.12)" stroke="#F86233" stroke-width="1.2"/>
-            <text x="490" y="567" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="13">Vgs</text>
+            <rect x="385" y="545" width="70" height="36" rx="14" fill="rgba(248,98,51,0.12)" stroke="#F86233" stroke-width="1.2"/>
+            <text x="420" y="569" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="13">Vgs</text>
           </g>
           <g class="ki-subagent" data-i="1">
-            <rect x="513" y="545" width="104" height="34" rx="14" fill="rgba(218,68,110,0.12)" stroke="#DA446E" stroke-width="1.2"/>
-            <text x="565" y="567" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="13">Tannhelse</text>
+            <rect x="465" y="545" width="110" height="36" rx="14" fill="rgba(218,68,110,0.12)" stroke="#DA446E" stroke-width="1.2"/>
+            <text x="520" y="569" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="13">Tannhelse</text>
           </g>
           <g class="ki-subagent" data-i="2">
-            <rect x="595" y="545" width="100" height="34" rx="14" fill="rgba(134,31,203,0.12)" stroke="#861FCB" stroke-width="1.2"/>
-            <text x="645" y="567" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="13">Samferdsel</text>
+            <rect x="585" y="545" width="120" height="36" rx="14" fill="rgba(134,31,203,0.12)" stroke="#861FCB" stroke-width="1.2"/>
+            <text x="645" y="569" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="13">Samferdsel</text>
           </g>
           <g class="ki-subagent" data-i="3">
-            <rect x="673" y="545" width="94" height="34" rx="14" fill="rgba(82,28,228,0.12)" stroke="#521CE4" stroke-width="1.2"/>
-            <text x="720" y="567" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="13">Tilskudd</text>
+            <rect x="715" y="545" width="100" height="36" rx="14" fill="rgba(82,28,228,0.12)" stroke="#521CE4" stroke-width="1.2"/>
+            <text x="765" y="569" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="13">Tilskudd</text>
           </g>
 
           <g class="ki-surface" data-i="5">
             <rect x="130" y="418" width="200" height="64" rx="18" fill="rgba(82,28,228,0.15)" stroke="#521CE4"/>
-            <text x="230" y="447" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="17">🎙️ Voice</text>
-            <text x="230" y="469" text-anchor="middle" fill="#C8B5FF" font-family="Red Hat Text" font-size="12">framtidig</text>
+            <text x="230" y="456" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="19">🎙️ Voice</text>
           </g>
 
           <g class="ki-surface" data-i="6">
             <rect x="15" y="240" width="180" height="64" rx="18" fill="rgba(79,27,229,0.15)" stroke="#4F1BE5"/>
-            <text x="105" y="269" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="17">👤 Intern</text>
-            <text x="105" y="291" text-anchor="middle" fill="#C8B5FF" font-family="Red Hat Text" font-size="12">saksbehandler</text>
+            <text x="105" y="278" text-anchor="middle" fill="#fff" font-family="Red Hat Text" font-weight="700" font-size="19">👤 Intern</text>
           </g>
         </svg>
       </div>
