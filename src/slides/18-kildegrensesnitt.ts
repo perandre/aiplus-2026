@@ -5,7 +5,7 @@ const slide: Slide = {
   title: 'Eksempel: Kildegrensesnitt',
   render: () =>
     mediaSlide({
-      eyebrow: 'Eksempel · Suksessfaktor 1',
+      eyebrow: 'Og bak kulissene',
       src: '/media/knowledge-sources.png',
       alt: 'Kildegrensesnitt',
       caption: 'Kildegrensesnitt som er enkle å bruke, integrert med API-er.',

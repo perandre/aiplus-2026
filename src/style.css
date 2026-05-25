@@ -423,8 +423,8 @@ body {
   flex: 0 0 auto;
   font-family: var(--font-text);
   font-weight: 700;
-  font-size: clamp(11px, 1.5cqh, 14px);
-  letter-spacing: 0.18em;
+  font-size: clamp(16px, 2.2cqh, 26px);
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--on-dark-muted);
   margin: 0;
@@ -550,8 +550,8 @@ body {
 .eyebrow {
   font-family: var(--font-text);
   font-weight: 700;
-  font-size: clamp(14px, 1.9cqh, 20px);
-  letter-spacing: 0.15em;
+  font-size: clamp(20px, 2.8cqh, 36px);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--brand);
   margin: 0 0 var(--s-lg);
