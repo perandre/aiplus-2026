@@ -113,6 +113,78 @@ body {
 .suksess-5 { background: var(--g5); }
 
 /* ============================================================
+   NUMBER COUNTER — live counting numbers in captions
+   ============================================================ */
+.num-counter {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+/* ============================================================
+   SANITIZE DEMO — live "raw → sanitized" animation on personvern slide
+   ============================================================ */
+.sanitize-demo {
+  position: absolute;
+  top: 4vmin;
+  right: 4vmin;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.4cqh, 16px);
+  z-index: 5;
+  font-family: var(--font-text);
+  font-size: clamp(12px, 1.7cqh, 17px);
+  font-weight: 700;
+  pointer-events: none;
+}
+.sanitize-label {
+  font-size: clamp(10px, 1.3cqh, 12px);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--on-dark-muted);
+  padding-right: 6px;
+}
+.sanitize-bubble {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 14px;
+  border-radius: var(--r-full);
+  color: var(--on-dark-muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  min-width: 24ch;
+}
+.sanitize-bubble .sanitize-prefix,
+.sanitize-bubble .sanitize-suffix { color: var(--on-dark-muted); }
+.sanitize-bubble .sanitize-target { color: var(--warning); font-weight: 700; }
+.sanitize-bubble-out {
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 360ms ease, transform 360ms ease;
+  border-color: rgba(82, 28, 228, 0.6);
+  background: rgba(82, 28, 228, 0.12);
+}
+.sanitize-bubble-out.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.sanitize-bubble-out .sanitize-out {
+  color: var(--g5);
+  font-family: 'SF Mono', Menlo, monospace;
+  font-size: 0.9em;
+}
+.sanitize-arrow {
+  color: var(--brand);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+.sanitize-arrow.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
    AGENDA LIST — for "2 mål i dag"-slide
    ============================================================ */
 .agenda {
