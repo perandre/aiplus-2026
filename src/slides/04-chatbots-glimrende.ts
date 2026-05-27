@@ -2,13 +2,12 @@ import type { Slide } from '../lib/slide';
 
 const slide: Slide = {
   id: 'chatbots-glimrende',
-  title: 'Chatbots er glimrende bruk av generativ KI',
+  title: 'Hvorfor chatbot',
   render: () => `
     <section class="slide statement">
-      <div class="eyebrow">Og det er ikke feil</div>
+      <div class="eyebrow">Hvorfor chatbot</div>
       <h1 class="statement-text">
-        Chatbots er <span class="gradient-text">glimrende bruk</span><br/>
-        av generativ KI.
+        Chatbots er (fortsatt) et <span class="gradient-text">glimrende grensesnitt</span> for generativ KI.
       </h1>
       <p class="statement-sub">
         Umiddelbar verdi til innbyggere og ansatte.
