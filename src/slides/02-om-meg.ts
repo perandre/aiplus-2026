@@ -12,7 +12,7 @@ const slide: Slide = {
         <h1 class="h1">Per André Rønsen</h1>
         <p class="lead" style="color:var(--on-dark-muted);">
           Head of AI · Frontkom<br/>
-          PhD-kandidat
+          PhD-kandidat hos Høgskolen i Østfold
         </p>
       </div>
       `

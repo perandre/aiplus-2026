@@ -1173,27 +1173,6 @@ body {
   transition: width 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* ============================================================
-   SESSION TIMER — subtle countdown in top-right when active
-   ============================================================ */
-#session-timer {
-  position: fixed;
-  top: 14px;
-  right: 18px;
-  z-index: 20;
-  font-family: 'SF Mono', 'JetBrains Mono', Menlo, monospace;
-  font-variant-numeric: tabular-nums;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.35);
-  letter-spacing: 0.02em;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 480ms ease, color 480ms ease;
-}
-#session-timer.is-active { opacity: 1; }
-#session-timer.is-low    { color: rgba(248, 98, 51, 0.7); }
-#session-timer.is-out    { color: rgba(251, 16, 101, 0.85); font-weight: 700; }
 
 /* Hide chrome in fullscreen presentation flow */
 @media print {

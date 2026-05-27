@@ -19,7 +19,6 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
   const nextBtn = document.getElementById('next') as HTMLButtonElement;
   const counter = document.getElementById('counter') as HTMLElement;
   const progressBar = document.getElementById('progress-bar') as HTMLElement;
-  const sessionTimerEl = document.getElementById('session-timer') as HTMLElement;
 
   // ---------- Auto-advance session ----------
   const totalDurationSec = slides.reduce(
@@ -114,23 +113,10 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
     }, remaining);
   }
 
+  // Session ticking is needed only to drive auto-advance (setTimeout) — the
+  // numerical countdown is shown in the speaker window, not on the main slide.
   function updateCountdown() {
-    if (!sessionIsActive()) {
-      sessionTimerEl.textContent = '';
-      sessionTimerEl.classList.remove('is-active', 'is-low', 'is-out', 'is-paused');
-      return;
-    }
-    const elapsedMs = session.paused
-      ? session.pausedSessionElapsedMs
-      : Date.now() - session.startedAtMs;
-    const remaining = Math.max(0, totalDurationSec - elapsedMs / 1000);
-    const mins = Math.floor(remaining / 60);
-    const secs = Math.floor(remaining % 60);
-    sessionTimerEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
-    sessionTimerEl.classList.add('is-active');
-    sessionTimerEl.classList.toggle('is-low', remaining < 120 && !session.paused);
-    sessionTimerEl.classList.toggle('is-out', remaining <= 0);
-    sessionTimerEl.classList.toggle('is-paused', session.paused);
+    // No-op: kept as a tick point in case we want to react to session state.
   }
 
   function startSession() {

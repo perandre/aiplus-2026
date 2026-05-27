@@ -13,6 +13,7 @@ const elRingOf = document.querySelector<HTMLElement>('.sp-ring-of')!;
 const elProgress = document.querySelector<HTMLElement>('.sp-progress')!;
 const elTotal = document.querySelector<HTMLElement>('.sp-total')!;
 const elTotalValue = document.querySelector<HTMLElement>('.sp-total-value')!;
+const elBottomBar = document.querySelector<HTMLElement>('.sp-bottom-progress-bar')!;
 
 const sync = createSync();
 
@@ -99,6 +100,10 @@ function applyMetadata() {
 
   elProgress.classList.toggle('is-paused', state.paused);
   elTotal.classList.toggle('is-paused', state.paused);
+
+  // Bottom slide-position bar (mirrors main window)
+  const pos = ((state.currentIndex + 1) / state.totalSlides) * 100;
+  elBottomBar.style.width = `${pos}%`;
 }
 
 function tick() {
