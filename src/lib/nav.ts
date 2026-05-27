@@ -67,9 +67,33 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
     sync.publish({ kind: 'state', payload: buildState() });
   }
 
-  // Respond to state requests from the speaker window
+  // Respond to state requests and commands from the speaker window
   sync.onMessage((msg) => {
-    if (msg.kind === 'request-state') publishState();
+    if (msg.kind === 'request-state') {
+      publishState();
+      return;
+    }
+    if (msg.kind === 'cmd') {
+      switch (msg.action) {
+        case 'next':
+          next();
+          break;
+        case 'prev':
+          prev();
+          break;
+        case 'toggle-pause':
+          if (sessionIsActive()) togglePause();
+          else next();
+          break;
+        case 'start':
+          go(0);
+          restartSession();
+          break;
+        case 'goto':
+          go(msg.index);
+          break;
+      }
+    }
   });
 
   function sessionIsActive(): boolean {

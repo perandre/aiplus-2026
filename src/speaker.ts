@@ -45,6 +45,43 @@ const retryTimer = setInterval(() => {
 window.addEventListener('focus', () => sync.publish({ kind: 'request-state' }));
 window.addEventListener('beforeunload', () => sync.close());
 
+// Remote control: keystrokes on the speaker window become commands sent
+// to the main presentation window via BroadcastChannel.
+document.addEventListener('keydown', (e) => {
+  if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+  switch (e.key) {
+    case 'ArrowRight':
+    case 'PageDown':
+    case 'n':
+      e.preventDefault();
+      sync.publish({ kind: 'cmd', action: 'next' });
+      break;
+    case 'ArrowLeft':
+    case 'PageUp':
+    case 'p':
+      e.preventDefault();
+      sync.publish({ kind: 'cmd', action: 'prev' });
+      break;
+    case ' ':
+      e.preventDefault();
+      sync.publish({ kind: 'cmd', action: 'toggle-pause' });
+      break;
+    case 'f':
+    case 'F':
+      e.preventDefault();
+      sync.publish({ kind: 'cmd', action: 'start' });
+      break;
+    case 'Home':
+      e.preventDefault();
+      sync.publish({ kind: 'cmd', action: 'goto', index: 0 });
+      break;
+    case 'End':
+      e.preventDefault();
+      if (state) sync.publish({ kind: 'cmd', action: 'goto', index: state.totalSlides - 1 });
+      break;
+  }
+});
+
 function applyMetadata() {
   if (!state) return;
   elPos.textContent = `Slide ${state.currentIndex + 1} / ${state.totalSlides}`;

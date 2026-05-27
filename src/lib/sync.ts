@@ -30,9 +30,17 @@ export interface PresentationState {
   sessionElapsedMsAtPause?: number;
 }
 
+export type RemoteCommand =
+  | { action: 'next' }
+  | { action: 'prev' }
+  | { action: 'toggle-pause' }
+  | { action: 'start' }
+  | { action: 'goto'; index: number };
+
 export type SyncMessage =
   | { kind: 'state'; payload: PresentationState }
-  | { kind: 'request-state' };
+  | { kind: 'request-state' }
+  | ({ kind: 'cmd' } & RemoteCommand);
 
 export interface Sync {
   publish: (msg: SyncMessage) => void;
