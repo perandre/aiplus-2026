@@ -16,11 +16,11 @@ import suksessfaktorer from './10-suksessfaktorer';
 import teknologiskFleksibilitet from './11-teknologisk-fleksibilitet';
 import reiseplanlegger from './12-reiseplanlegger';
 import datadrevetInnsikt from './13-datadrevet-innsikt';
-import personvernForst from './14-personvern-forst';
-import monitorering from './15-monitorering';
-import monitoreringAnalytics from './16-monitorering-analytics';
-import vedlikehold from './17-vedlikehold';
-import kildegrensesnitt from './18-kildegrensesnitt';
+import personvernSection from './14-personvern-section';
+import personvernEksempel from './15-personvern-eksempel';
+import monitoreringSection from './16-monitorering-section';
+import monitoreringEksempel from './17-monitorering-eksempel';
+import vedlikehold from './18-vedlikehold';
 
 // DEL 3 — TENK STØRRE
 import tenkStorre from './19-tenk-storre';
@@ -35,7 +35,8 @@ import andreGrensesnitt from './27-andre-grensesnitt';
 
 // DEL 4 — AVSLUTNING
 import takeAways from './28-take-aways';
-import takkQa from './29-takk-qa';
+import tindre from './29-tindre';
+import takkQa from './30-takk-qa';
 
 export const slides: Slide[] = [
   cover,
@@ -51,11 +52,11 @@ export const slides: Slide[] = [
   teknologiskFleksibilitet,
   reiseplanlegger,
   datadrevetInnsikt,
-  personvernForst,
-  monitorering,
-  monitoreringAnalytics,
+  personvernSection,
+  personvernEksempel,
+  monitoreringSection,
+  monitoreringEksempel,
   vedlikehold,
-  kildegrensesnitt,
   tenkStorre,
   nfk5Agenter,
   chapterKiLag,
@@ -66,6 +67,7 @@ export const slides: Slide[] = [
   grensesnittFeedback,
   andreGrensesnitt,
   takeAways,
+  tindre,
   takkQa,
 ];
 
@@ -85,12 +87,12 @@ const SLIDE_DURATIONS: Record<string, number> = {
   suksessfaktorer: 25,
   'teknologisk-fleksibilitet': 25,
   reiseplanlegger: 50,
-  'datadrevet-innsikt': 25,
-  'personvern-forst': 60,
-  monitorering: 35,
-  'monitorering-analytics': 35,
-  vedlikehold: 45,
-  kildegrensesnitt: 40,
+  'datadrevet-innsikt': 45,
+  'personvern-section': 20,
+  'personvern-eksempel': 50,
+  'monitorering-section': 20,
+  'monitorering-eksempel': 40,
+  vedlikehold: 35,
   'tenk-storre': 15,
   'nfk-5-agenter': 25,
   'chapter-ki-lag': 12,
@@ -101,6 +103,7 @@ const SLIDE_DURATIONS: Record<string, number> = {
   'grensesnitt-feedback': 40,
   'andre-grensesnitt': 30,
   'take-aways': 30,
+  tindre: 12,
   qa: 60,
 };
 

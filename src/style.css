@@ -113,6 +113,23 @@ body {
 .suksess-5 { background: var(--g5); }
 
 /* ============================================================
+   TINDRE FULL-BLEED — single image covering the entire viewport
+   ============================================================ */
+.slide.tindre-fullbleed {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.slide.tindre-fullbleed img {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ============================================================
    BG VIDEO SLIDE — full-bleed video + dark gradient overlay
    ============================================================ */
 .slide.bg-video {
