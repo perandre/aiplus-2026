@@ -4,46 +4,44 @@ import type { Slide } from '../lib/slide';
 import cover from './01-cover';
 import omMeg from './02-om-meg';
 import omFrontkom from './03-om-frontkom';
-import hvorforEnda from './04-hvorfor-enda-en-chat';
-import chatbotsGlimrende from './05-chatbots-glimrende';
-import mittPoeng from './06-mitt-poeng';
-import toMalIdag from './07-2-mal-idag';
+import chatbotsGlimrende from './04-chatbots-glimrende';
+import inspirasjon from './05-inspirasjon';
+import toMalIdag from './06-2-mal-idag';
 
 // DEL 2 — REIS NORDLAND + SUKSESSFAKTORER
-import reisIntro from './08-reis-nordland-intro';
-import video from './09-video';
-import finalist from './10-finalist';
-import suksessfaktorer from './11-suksessfaktorer';
-import teknologiskFleksibilitet from './12-teknologisk-fleksibilitet';
-import reiseplanlegger from './13-reiseplanlegger';
-import datadrevetInnsikt from './14-datadrevet-innsikt';
-import personvernForst from './15-personvern-forst';
-import monitorering from './16-monitorering';
-import vedlikehold from './17-vedlikehold';
-import kildegrensesnitt from './18-kildegrensesnitt';
+import reisIntro from './07-reis-nordland-intro';
+import video from './08-video';
+import finalist from './09-finalist';
+import suksessfaktorer from './10-suksessfaktorer';
+import teknologiskFleksibilitet from './11-teknologisk-fleksibilitet';
+import reiseplanlegger from './12-reiseplanlegger';
+import datadrevetInnsikt from './13-datadrevet-innsikt';
+import personvernForst from './14-personvern-forst';
+import monitorering from './15-monitorering';
+import vedlikehold from './16-vedlikehold';
+import kildegrensesnitt from './17-kildegrensesnitt';
 
 // DEL 3 — TENK STØRRE
-import tenkStorre from './19-tenk-storre';
-import nfk5Agenter from './20-nfk-5-agenter';
-import chapterKiLag from './21-chapter-ki-lag';
-import illustrasjon5 from './22-illustrasjon-5-agenter';
-import kiLagForBrukerreisen from './23-ki-lag-for-brukerreisen';
-import grensesnittAiSok from './24-overflate-ai-sok';
-import grensesnittStudierad from './25-overflate-studieguide';
-import grensesnittFeedback from './26-overflate-feedback';
-import andreGrensesnitt from './27-andre-grensesnitt';
+import tenkStorre from './18-tenk-storre';
+import nfk5Agenter from './19-nfk-5-agenter';
+import chapterKiLag from './20-chapter-ki-lag';
+import illustrasjon5 from './21-illustrasjon-5-agenter';
+import kiLagForBrukerreisen from './22-ki-lag-for-brukerreisen';
+import grensesnittAiSok from './23-overflate-ai-sok';
+import grensesnittStudierad from './24-overflate-studieguide';
+import grensesnittFeedback from './25-overflate-feedback';
+import andreGrensesnitt from './26-andre-grensesnitt';
 
 // DEL 4 — AVSLUTNING
-import takeAways from './28-take-aways';
-import takkQa from './29-takk-qa';
+import takeAways from './27-take-aways';
+import takkQa from './28-takk-qa';
 
 export const slides: Slide[] = [
   cover,
   omMeg,
   omFrontkom,
-  hvorforEnda,
   chatbotsGlimrende,
-  mittPoeng,
+  inspirasjon,
   toMalIdag,
   reisIntro,
   video,
@@ -71,13 +69,11 @@ export const slides: Slide[] = [
 
 /**
  * Per-slide auto-advance durations (seconds). Used when 'f' starts the session timer.
- * Sum is ~1050s = ~17:30, leaving ~2:30 buffer of a 20-min slot for Q&A onset.
  */
 const SLIDE_DURATIONS: Record<string, number> = {
   cover: 12,
   'om-meg': 15,
   'om-frontkom': 20,
-  'hvorfor-enda-en-chat': 18,
   'chatbots-glimrende': 15,
   inspirasjon: 12,
   '2-mal-idag': 18,
