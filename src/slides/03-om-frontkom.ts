@@ -10,7 +10,7 @@ const slide: Slide = {
       <div class="bg-content">
         <div class="eyebrow">Om Frontkom</div>
         <img class="om-frontkom-logo" src="/logos/logo-frontkom-on-dark.svg" alt="Frontkom" />
-        <h2 class="om-frontkom-tag">Partner for <span class="gradient-text">digital vekst og KI</span>.</h2>
+        <h2 class="om-frontkom-tag">Partner for digital vekst og KI.</h2>
       </div>
     </section>
   `,
