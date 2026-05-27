@@ -63,11 +63,22 @@ body {
   justify-content: space-between;
 }
 
+.cover-subtitle {
+  font-family: var(--font-text);
+  font-weight: 400;
+  font-size: clamp(20px, 3cqh, 36px);
+  line-height: 1.35;
+  color: var(--on-dark-muted);
+  margin: 0;
+  max-width: 38ch;
+  letter-spacing: -0.005em;
+}
+
 .cover-byline {
   display: flex;
   align-items: center;
   gap: var(--s-lg);
-  margin-top: var(--s-xl);
+  margin-top: var(--s-md);
   font-size: clamp(20px, 2.6cqh, 30px);
   color: var(--on-dark-muted);
   font-weight: 700;
