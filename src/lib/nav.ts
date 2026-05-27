@@ -1,3 +1,4 @@
+import { createSync, type PresentationState, type Sync } from './sync';
 import type { Slide } from './slide';
 
 export interface NavController {
@@ -26,50 +27,101 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
     0
   );
 
+  // All timestamps are Date.now() so we can share with another window.
   const session = {
-    startedAt: 0,           // performance.now() when session started
-    slideTimer: 0,          // setTimeout id for current slide auto-advance
-    countdownTimer: 0,      // setInterval id for visual countdown
+    startedAtMs: 0,
+    slideStartedAtMs: 0,
+    paused: false,
+    /** When paused, holds elapsed-on-slide at the moment of pause. */
+    pausedSlideElapsedMs: 0,
+    /** When paused, holds elapsed-of-session at the moment of pause. */
+    pausedSessionElapsedMs: 0,
+    /** When paused, when did the pause begin (Date.now()) — used to shift starts on resume. */
+    pauseStartedAtMs: 0,
+    slideTimer: 0,
+    countdownTimer: 0,
   };
 
+  // ---------- Cross-window sync (speaker notes) ----------
+  const sync: Sync = createSync();
+
+  function buildState(): PresentationState {
+    return {
+      currentIndex: index,
+      totalSlides: slides.length,
+      slides: slides.map((s) => ({
+        id: s.id,
+        title: s.title,
+        durationSec: s.durationSec ?? DEFAULT_DURATION_SEC,
+      })),
+      sessionStartedAtMs: session.startedAtMs,
+      slideStartedAtMs: session.slideStartedAtMs,
+      totalDurationSec,
+      paused: session.paused,
+      slideElapsedMsAtPause: session.paused ? session.pausedSlideElapsedMs : undefined,
+      sessionElapsedMsAtPause: session.paused ? session.pausedSessionElapsedMs : undefined,
+    };
+  }
+
+  function publishState() {
+    sync.publish({ kind: 'state', payload: buildState() });
+  }
+
+  // Respond to state requests from the speaker window
+  sync.onMessage((msg) => {
+    if (msg.kind === 'request-state') publishState();
+  });
+
   function sessionIsActive(): boolean {
-    return session.startedAt > 0;
+    return session.startedAtMs > 0;
   }
 
   function scheduleAdvance() {
     clearTimeout(session.slideTimer);
-    if (!sessionIsActive()) return;
-    if (index >= slides.length - 1) return; // don't advance past last slide
+    session.slideTimer = 0;
+    if (!sessionIsActive() || session.paused) return;
+    if (index >= slides.length - 1) return;
     const dur = (slides[index].durationSec ?? DEFAULT_DURATION_SEC) * 1000;
+    const elapsed = Date.now() - session.slideStartedAtMs;
+    const remaining = Math.max(0, dur - elapsed);
     session.slideTimer = window.setTimeout(() => {
       session.slideTimer = 0;
       next();
-    }, dur);
+    }, remaining);
   }
 
   function updateCountdown() {
     if (!sessionIsActive()) {
       sessionTimerEl.textContent = '';
-      sessionTimerEl.classList.remove('is-active');
+      sessionTimerEl.classList.remove('is-active', 'is-low', 'is-out', 'is-paused');
       return;
     }
-    const elapsedSec = (performance.now() - session.startedAt) / 1000;
-    const remaining = Math.max(0, totalDurationSec - elapsedSec);
+    const elapsedMs = session.paused
+      ? session.pausedSessionElapsedMs
+      : Date.now() - session.startedAtMs;
+    const remaining = Math.max(0, totalDurationSec - elapsedMs / 1000);
     const mins = Math.floor(remaining / 60);
     const secs = Math.floor(remaining % 60);
     sessionTimerEl.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
     sessionTimerEl.classList.add('is-active');
-    // Warning tone when under 2 min
-    sessionTimerEl.classList.toggle('is-low', remaining < 120);
+    sessionTimerEl.classList.toggle('is-low', remaining < 120 && !session.paused);
     sessionTimerEl.classList.toggle('is-out', remaining <= 0);
+    sessionTimerEl.classList.toggle('is-paused', session.paused);
   }
 
   function startSession() {
     stopSession();
-    session.startedAt = performance.now();
-    session.countdownTimer = window.setInterval(updateCountdown, 1000);
+    const now = Date.now();
+    session.startedAtMs = now;
+    session.slideStartedAtMs = now;
+    session.paused = false;
+    session.pausedSlideElapsedMs = 0;
+    session.pausedSessionElapsedMs = 0;
+    session.pauseStartedAtMs = 0;
+    session.countdownTimer = window.setInterval(updateCountdown, 500);
     updateCountdown();
     scheduleAdvance();
+    publishState();
   }
 
   function stopSession() {
@@ -77,13 +129,45 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
     clearInterval(session.countdownTimer);
     session.slideTimer = 0;
     session.countdownTimer = 0;
-    session.startedAt = 0;
+    session.startedAtMs = 0;
+    session.slideStartedAtMs = 0;
+    session.paused = false;
+    session.pauseStartedAtMs = 0;
     updateCountdown();
+    publishState();
   }
 
   function restartSession() {
     stopSession();
     startSession();
+  }
+
+  function togglePause() {
+    if (!sessionIsActive()) return;
+    if (session.paused) {
+      // RESUME — shift starts forward by pause duration so elapsed math stays correct
+      const pauseDuration = Date.now() - session.pauseStartedAtMs;
+      session.startedAtMs += pauseDuration;
+      session.slideStartedAtMs += pauseDuration;
+      session.paused = false;
+      session.pauseStartedAtMs = 0;
+      session.pausedSlideElapsedMs = 0;
+      session.pausedSessionElapsedMs = 0;
+      scheduleAdvance();
+      updateCountdown();
+      publishState();
+    } else {
+      // PAUSE — freeze elapsed values and cancel the slide timer
+      clearTimeout(session.slideTimer);
+      session.slideTimer = 0;
+      const now = Date.now();
+      session.pausedSlideElapsedMs = now - session.slideStartedAtMs;
+      session.pausedSessionElapsedMs = now - session.startedAtMs;
+      session.pauseStartedAtMs = now;
+      session.paused = true;
+      updateCountdown();
+      publishState();
+    }
   }
 
   // ---------- Slide rendering & navigation ----------
@@ -118,8 +202,18 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
     progressBar.style.width = `${((index + 1) / slides.length) * 100}%`;
     document.title = `${slide.title} — Frontkom @ AI+Offentlig sektor`;
     writeHash(index);
-    // Always re-schedule the per-slide timer (cancels any previous one)
-    scheduleAdvance();
+    // Reset slide start time and reschedule any per-slide timer
+    if (sessionIsActive()) {
+      session.slideStartedAtMs = Date.now();
+      if (session.paused) {
+        // If we navigated while paused, reset the frozen slide-elapsed to zero
+        session.pausedSlideElapsedMs = 0;
+        // Pause start stays as-is (we still want session totals to freeze)
+      } else {
+        scheduleAdvance();
+      }
+    }
+    publishState();
   }
 
   function go(n: number) {
@@ -135,11 +229,14 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
     if (index > 0) go(index - 1);
   }
 
+  function openSpeakerWindow() {
+    window.open('/speaker.html', 'aiplus-speaker', 'width=800,height=900');
+  }
+
   document.addEventListener('keydown', (e) => {
     if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
     switch (e.key) {
       case 'ArrowRight':
-      case ' ':
       case 'PageDown':
       case 'n':
         e.preventDefault();
@@ -151,6 +248,12 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
         e.preventDefault();
         prev();
         break;
+      case ' ':
+        // Spacebar: pause/resume autoplay. If no session active yet, skip ahead.
+        e.preventDefault();
+        if (sessionIsActive()) togglePause();
+        else next();
+        break;
       case 'Home':
         e.preventDefault();
         go(0);
@@ -158,6 +261,11 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
       case 'End':
         e.preventDefault();
         go(slides.length - 1);
+        break;
+      case 's':
+      case 'S':
+        e.preventDefault();
+        openSpeakerWindow();
         break;
       case 'f':
       case 'F':
@@ -186,6 +294,8 @@ export function createNav(slides: Slide[], stage: HTMLElement): NavController {
     const n = readHash();
     if (n !== index) go(n);
   });
+
+  window.addEventListener('beforeunload', () => sync.close());
 
   // initial render
   index = readHash();

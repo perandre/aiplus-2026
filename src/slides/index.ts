@@ -83,7 +83,7 @@ const SLIDE_DURATIONS: Record<string, number> = {
   '2-mal-idag': 18,
   'reis-nordland-intro': 20,
   'hook-reis-video': 110,
-  finalist: 15,
+  finalist: 8,
   suksessfaktorer: 25,
   'teknologisk-fleksibilitet': 25,
   reiseplanlegger: 50,
